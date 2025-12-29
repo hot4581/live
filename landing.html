@@ -1,0 +1,204 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Verification | Institutional Stock Intelligence Group</title>
+    <style>
+        :root {
+            --primary-gold: #c5a059;
+            --bg-dark: #0a0c10;
+            --card-bg: #14171c;
+            --text-main: #e0e0e0;
+            --text-muted: #8a8d91;
+            --accent-blue: #3498db;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-dark);
+            color: var(--text-main);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 20px;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 600px;
+            width: 100%;
+            background: var(--card-bg);
+            border: 1px solid #2a2e35;
+            border-radius: 8px;
+            padding: 40px;
+            text-align: center;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.4);
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: 700;
+            letter-spacing: 2px;
+            color: var(--primary-gold);
+            margin-bottom: 30px;
+            text-transform: uppercase;
+            border-bottom: 1px solid var(--primary-gold);
+            display: inline-block;
+            padding-bottom: 5px;
+        }
+
+        h1 {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+            color: #ffffff;
+        }
+
+        .notice-box {
+            background: rgba(197, 160, 89, 0.05);
+            border-left: 3px solid var(--primary-gold);
+            padding: 20px;
+            text-align: left;
+            margin-bottom: 30px;
+            font-size: 0.95rem;
+        }
+
+        .notice-box p {
+            margin-bottom: 10px;
+        }
+
+        .highlight {
+            color: var(--primary-gold);
+            font-weight: 600;
+        }
+
+        .countdown-container {
+            margin: 30px 0;
+        }
+
+        .timer-circle {
+            width: 80px;
+            height: 80px;
+            border: 3px solid #2a2e35;
+            border-top: 3px solid var(--primary-gold);
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 0 auto 20px;
+            font-size: 2rem;
+            font-weight: bold;
+            color: var(--primary-gold);
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin {
+            0% { border-top-color: var(--primary-gold); }
+            100% { transform: rotate(0deg); }
+        }
+
+        .btn {
+            display: inline-block;
+            background: var(--primary-gold);
+            color: #000;
+            text-decoration: none;
+            padding: 15px 40px;
+            border-radius: 4px;
+            font-weight: 700;
+            text-transform: uppercase;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            border: none;
+            width: 100%;
+        }
+
+        .btn:hover {
+            background: #d4b375;
+            transform: translateY(-2px);
+        }
+
+        .footer-note {
+            margin-top: 30px;
+            font-size: 0.8rem;
+            color: var(--text-muted);
+        }
+
+        /* 响应式调整 */
+        @media (max-width: 480px) {
+            .container {
+                padding: 25px 15px;
+            }
+            h1 {
+                font-size: 1.2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <div class="logo">Stock Intelligence Group</div>
+        
+        <h1>Professional Network Access</h1>
+        
+        <div class="notice-box">
+            <p>Welcome to the exclusive network of <span class="highlight">IB Analysts, Quants, and Institutional Traders</span>.</p>
+            <p><strong>Verification Required:</strong> To maintain our professional environment, all new members must complete the onboarding process via WhatsApp with our administrator, <span class="highlight">Ms. Alana Bennett</span>.</p>
+            <p>You are being redirected to our official community hub.</p>
+        </div>
+
+        <div class="countdown-container">
+            <div id="timer" class="timer-circle">5</div>
+            <p id="status-text">Redirecting to WhatsApp in <span id="seconds">5</span> seconds...</p>
+        </div>
+
+        <a href="https://chat.whatsapp.com/DsNX3FyElCkHbzXkqnArDR" class="btn" id="join-btn">Join Now Manually</a>
+
+        <div class="footer-note">
+            <p>Institutional Grade Research • Data Driven • Zero Speculation</p>
+            <p style="margin-top: 10px; color: #cc4444;">Warning: Never trust non-admin accounts or external links.</p>
+        </div>
+    </div>
+
+    <script>
+        (function() {
+            // 配置跳转链接
+            const targetUrl = "https://chat.whatsapp.com/DsNX3FyElCkHbzXkqnArDR";
+            let timeLeft = 5;
+
+            const timerDisplay = document.getElementById('timer');
+            const secondsDisplay = document.getElementById('seconds');
+            const statusText = document.getElementById('status-text');
+
+            // 倒计时逻辑
+            const countdown = setInterval(function() {
+                timeLeft--;
+                
+                // 更新UI
+                if(timerDisplay) timerDisplay.textContent = timeLeft;
+                if(secondsDisplay) secondsDisplay.textContent = timeLeft;
+
+                if (timeLeft <= 0) {
+                    clearInterval(countdown);
+                    statusText.textContent = "Redirecting now...";
+                    // 执行跳转
+                    window.location.href = targetUrl;
+                }
+            }, 1000);
+
+            // 点击按钮立即跳转（作为后备方案）
+            document.getElementById('join-btn').addEventListener('click', function(e) {
+                // 如果用户点击了按钮，则不需要再等待自动跳转
+                clearInterval(countdown);
+            });
+        })();
+    </script>
+</body>
+</html>
